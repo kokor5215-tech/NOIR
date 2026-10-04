@@ -1,0 +1,138 @@
+name: Build APK
+
+# ============================================================================
+# NOIR — Build APK lewat GitHub Actions
+# ============================================================================
+# Kenapa di sini, bukan di HP/PC biasa?
+#   Proyek ini butuh: JDK 17, Android SDK 37, dan heap Gradle ~4 GB.
+#   Runner GitHub punya 16 GB RAM + Android SDK siap pakai. Gratis.
+#
+# DUA JALUR:
+#   1. "APK Debug"    -> TANPA secret apa pun. Langsung bisa dijalankan.
+#                         Hasilnya bisa langsung di-install di HP.
+#                         Pakai ini dulu untuk mencoba.
+#   2. "APK Release"  -> Butuh 4 secret (keystore). Untuk rilis serius.
+#                         Otomatis di-skip kalau secret belum diisi.
+#
+# Cara pakai: tab "Actions" di GitHub -> pilih workflow ini -> "Run workflow".
+# Hasilnya di bagian "Artifacts" bawah halaman run.
+# ============================================================================
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  # ==========================================================================
+  # JALUR 1 — DEBUG (selalu jalan, tanpa secret)
+  # ==========================================================================
+  debug:
+    name: APK Debug (tanpa secret)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      - name: Siapkan JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Pasang Android NDK dan CMake
+        run: |
+          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          SDKM="$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
+          if [ ! -x "$SDKM" ]; then SDKM="$(command -v sdkmanager)"; fi
+          test -x "$SDKM"
+          export ANDROID_HOME="$SDK_ROOT" ANDROID_SDK_ROOT="$SDK_ROOT"
+          yes | "$SDKM" --licenses >/dev/null 2>&1 || true
+          "$SDKM" --install "platform-tools" "platforms;android-37.0" "platforms;android-36" "build-tools;37.0.0" "ndk;27.2.12479018" "cmake;3.22.1"
+
+      - name: Izinkan Gradle
+        run: chmod +x gradlew
+
+      - name: Build APK debug
+        run: ./gradlew assembleStableDebug
+        env:
+          # Ganti dengan username & repo GitHub KAMU.
+          # Kalau dibiarkan, fitur "cek update" di dalam aplikasi tidak jalan
+          # (aplikasinya tetap normal).
+          UPDATE_GITHUB_USER: ${{ github.repository_owner }}
+          UPDATE_GITHUB_REPO: ${{ github.event.repository.name }}
+
+      - name: Kumpulkan APK
+        run: |
+          mkdir -p output
+          find app/build/outputs/apk -name "*.apk" -exec cp {} output/ \;
+          echo "APK yang dihasilkan:"
+          ls -lh output/
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Noir-Debug-APK
+          path: output/*.apk
+          if-no-files-found: error
+
+  # ==========================================================================
+  # JALUR 2 — RELEASE SIGNED (butuh 4 secret)
+  # ==========================================================================
+  release:
+    name: APK Release (butuh keystore)
+    runs-on: ubuntu-latest
+
+    # Lewati job ini kalau secret keystore belum diisi,
+    # supaya workflow tidak merah untuk pengguna baru.
+    if: ${{ vars.HAS_SIGNING_KEY == 'true' }}
+
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v4
+
+      - name: Siapkan JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Pasang Android NDK dan CMake
+        run: |
+          SDK_ROOT="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          SDKM="$SDK_ROOT/cmdline-tools/latest/bin/sdkmanager"
+          if [ ! -x "$SDKM" ]; then SDKM="$(command -v sdkmanager)"; fi
+          test -x "$SDKM"
+          export ANDROID_HOME="$SDK_ROOT" ANDROID_SDK_ROOT="$SDK_ROOT"
+          yes | "$SDKM" --licenses >/dev/null 2>&1 || true
+          "$SDKM" --install "platform-tools" "platforms;android-37.0" "platforms;android-36" "build-tools;37.0.0" "ndk;27.2.12479018" "cmake;3.22.1"
+
+      - name: Siapkan keystore dari secret
+        run: |
+          echo "${{ secrets.SIGNING_KEY }}" | base64 -d > app/release.keystore
+          test -s app/release.keystore || { echo "Keystore kosong!"; exit 1; }
+
+      - name: Izinkan Gradle
+        run: chmod +x gradlew
+
+      - name: Build APK release
+        run: ./gradlew assembleStableRelease
+        env:
+          KEYSTORE_PATH: release.keystore
+          ALIAS: ${{ secrets.ALIAS }}
+          KEY_STORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          UPDATE_GITHUB_USER: ${{ github.repository_owner }}
+          UPDATE_GITHUB_REPO: ${{ github.event.repository.name }}
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Noir-Release-APK
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: error

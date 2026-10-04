@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: fade hero dua arah —
+     atas: scrim tipis area status bar supaya ikon/jam tetap terbaca;
+     bawah: menggelap perlahan supaya tepi bawah gambar LELEH ke area baris,
+     bukan putus seperti tambalan. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <!-- NOIR: ujung bawah dilembutkan (#99) karena artwork kini ikut
+                 melarut via NoirFadeImageView — tidak dobel menggelap. -->
+            <gradient
+                android:angle="270"
+                android:startColor="#00000000"
+                android:centerColor="#33000000"
+                android:centerY="0.55"
+                android:endColor="#99000000" />
+        </shape>
+    </item>
+    <item android:height="140dp">
+        <shape>
+            <gradient
+                android:angle="270"
+                android:startColor="#66000000"
+                android:endColor="#00000000" />
+        </shape>
+    </item>
+</layer-list>

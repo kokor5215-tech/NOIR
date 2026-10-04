@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: circle-flag KH — (c) HatScripts/circle-flags, MIT. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="512" android:viewportHeight="512">
+  <group>
+    <clip-path android:pathData="M0.0,256.0 a256.0,256.0 0 1,0 512.0,0 a256.0,256.0 0 1,0 -512.0,0 Z" />
+      <path android:fillColor="#FF0052B4"
+        android:pathData="M0 0h512v133.7l-39 121.6 39 123.2V512H0V378.5L34.2 255 0 133.7z" />
+      <path android:fillColor="#FFD80027"
+        android:pathData="M0 133.7h512v244.8H0z" />
+      <path android:fillColor="#FFEEEEEE"
+        android:pathData="M345 306.1v-33.3h-22.2v-44.5L300.5 206l-22.2 22.3v-44.5L256 161.5l-22.3 22.3v44.5L211.5 206l-22.3 22.3v44.5H167v33.4h-22.3v33.4h222.6v-33.5z" />
+  </group>
+</vector>

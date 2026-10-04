@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR v2: "liquid glass" ala PDF riset (Liquid Glass / glassmorphism):
+     isi semi-transparan supaya aura latar menembus, hairline terang 1dp,
+     highlight atas tipis = kaca tertimpa cahaya. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#B314141C"
+                android:endColor="#990A0A10" />
+            <corners android:radius="32dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#26FFFFFF"
+                android:centerColor="#00FFFFFF"
+                android:endColor="#00FFFFFF" />
+            <corners android:radius="32dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="#26FFFFFF" />
+            <corners android:radius="32dp" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: placeholder cover monokrom. Pengganti blok abu polos bawaan yang
+     terlihat seperti "gambar hilang". Latar gelap + hairline + ikon foto samar. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="324dp"
+    android:height="511dp"
+    android:viewportWidth="324"
+    android:viewportHeight="511">
+    <path
+        android:pathData="M0,0h324v511h-324z"
+        android:fillColor="#141416"/>
+    <path
+        android:pathData="M1,1h322v509h-322z"
+        android:fillColor="#00000000"
+        android:strokeColor="#2C2C2E"
+        android:strokeWidth="2"/>
+    <path
+        android:pathData="M120,207h84a10,10 0 0 1 10,10v84a10,10 0 0 1 -10,10h-84a10,10 0 0 1 -10,-10v-84a10,10 0 0 1 10,-10z"
+        android:fillColor="#00000000"
+        android:strokeColor="#3A3A3C"
+        android:strokeWidth="6"/>
+    <path
+        android:pathData="M143,237a11,11 0 1 0 0.2,0z"
+        android:fillColor="#3A3A3C"/>
+    <path
+        android:pathData="M126,297l24,-28l16,18l14,-16l22,26z"
+        android:fillColor="#3A3A3C"/>
+</vector>

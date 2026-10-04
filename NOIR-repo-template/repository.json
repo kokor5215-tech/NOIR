@@ -1,0 +1,8 @@
+{
+  "name": "Noir Extensions",
+  "description": "Repository extension resmi Noir — provider & plugin yang bisa di-update tanpa build ulang APK.",
+  "manifestVersion": 1,
+  "pluginLists": [
+    "https://raw.githubusercontent.com/USERNAME/NOIR-extensions/builds/plugins.json"
+  ]
+}

@@ -1,0 +1,68 @@
+# ============================================================
+# NOIR — Build EXTENSION/PROVIDER otomatis (L1: TANPA APK!)
+# Taruh source extension di folder extensions/<NamaProvider>/,
+# push ke main → .cs3 dibuild → plugins.json di-commit balik
+# ke branch builds → app memperbarui plugin OTOMATIS.
+# ============================================================
+name: Build Extensions
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ 'extensions/**' ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 11
+
+      # Template build extension memakai gradle-plugin resmi Cloudstream.
+      # Struktur minimal extensions/<Nama>/build.gradle ada di README.
+      - name: Build semua extension
+        run: |
+          chmod +x gradlew
+          for d in extensions/*/; do
+            [ -f "$d/build.gradle.kts" ] || [ -f "$d/build.gradle" ] || continue
+            ( cd "$d" && "$OLDPWD/gradlew" -b build.gradle.kts make makeJar || true )
+          done
+
+      - name: Kumpulkan .cs3 + buat plugins.json
+        run: |
+          mkdir -p builds
+          python3 - <<'PY'
+          import json, glob, os, hashlib
+          plugins = []
+          for cs3 in glob.glob('extensions/**/*.cs3', recursive=True):
+              data = open(cs3, 'rb').read()
+              dst = 'builds/' + os.path.basename(cs3)
+              open(dst, 'wb').write(data)
+              plugins.append({
+                  "name": os.path.basename(cs3).split('.')[0],
+                  "url": "https://raw.githubusercontent.com/${{ github.repository }}/builds/" + os.path.basename(cs3),
+                  "version": 1,
+                  "status": "OK",
+                  "tvTypes": ["Movie", "TvSeries"],
+                  "language": "id",
+                  "sha256": hashlib.sha256(data).hexdigest()
+              })
+          json.dump(plugins, open('builds/plugins.json', 'w'), indent=2)
+          print(len(plugins), "extension dikemas")
+          PY
+
+      - name: Commit ke branch builds
+        run: |
+          git config user.name "noir-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git checkout --orphan builds || git checkout builds
+          git rm -rf --cached . 2>/dev/null || true
+          cp -r builds/* . 2>/dev/null || true
+          git add -f plugins.json *.cs3 2>/dev/null || true
+          git commit -m "extensions build $(date -u +%F)" || true
+          git push -f origin builds

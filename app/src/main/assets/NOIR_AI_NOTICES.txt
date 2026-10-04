@@ -1,0 +1,19 @@
+NOIR OFFLINE TRANSLATION — THIRD-PARTY NOTICES
+
+Tencent Hy-MT2-1.8B, Q4_K_M GGUF
+- Copyright (C) 2026 Tencent.
+- Model source: https://huggingface.co/tencent/Hy-MT2-1.8B-GGUF
+- Pinned model revision: a0c709d9fac510f2c807aa3af52872340dc37a4a
+- License: Apache License 2.0. Full text: Hy-MT2-LICENSE.txt
+- SHA-256: dc5f44fcf1fa496ee7ad725982c0c8c553a4de00259b53af84c4b89fb0c06699
+- The model weights are not bundled in the APK. They are fetched only when the
+  user explicitly chooses to download the local model, then stored privately.
+
+llama.cpp
+- Copyright (c) 2023-2026 The ggml authors.
+- Source: https://github.com/ggml-org/llama.cpp
+- Pinned release: v0.5.0
+- License: MIT. Full text: llama.cpp-LICENSE.txt
+
+NOIR downloads only the model weights from Hugging Face. Lyrics are not sent to
+Hy-MT2 cloud services: inference is performed locally by the bundled CPU runtime.

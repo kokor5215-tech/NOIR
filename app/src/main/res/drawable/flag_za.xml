@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: circle-flag ZA — (c) HatScripts/circle-flags, MIT. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="512" android:viewportHeight="512">
+  <group>
+    <clip-path android:pathData="M0.0,256.0 a256.0,256.0 0 1,0 512.0,0 a256.0,256.0 0 1,0 -512.0,0 Z" />
+      <path android:fillColor="#FFEEEEEE"
+        android:pathData="m0 0 192 256L0 512h47l465-189v-34l-32-33 32-33v-34L47 0Z" />
+      <path android:fillColor="#FF333333"
+        android:pathData="M0 142v228l140-114z" />
+      <path android:fillColor="#FFFFDA44"
+        android:pathData="M192 256 0 95v47l114 114L0 370v47z" />
+      <path android:fillColor="#FF6DA544"
+        android:pathData="M512 223H223L0 0v94l161 162L0 418v94l223-223h289z" />
+      <path android:fillColor="#FFD80027"
+        android:pathData="M512 0H47l189 189h276z" />
+      <path android:fillColor="#FF0052B4"
+        android:pathData="M512 512H47l189-189h276z" />
+  </group>
+</vector>

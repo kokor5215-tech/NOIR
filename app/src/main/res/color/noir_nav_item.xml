@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: ikon tab — terpilih putih bersih, lainnya abu sistem (systemGray)
+     supaya hierarki terpilih/belum langsung terbaca di mata. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#FFFFFFFF" android:state_checked="true" />
+    <item android:color="#FFFFFFFF" android:state_focused="true" />
+    <item android:color="#FF8E8E93" />
+</selector>

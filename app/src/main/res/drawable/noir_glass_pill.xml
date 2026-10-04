@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: pil kaca buram ala Apple untuk search bar beranda.
+     Transparan + hairline terang = efek frosted glass tanpa blur mahal. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="24dp"/>
+    <solid android:color="#14FFFFFF"/>
+    <stroke android:width="1dp" android:color="#33FFFFFF"/>
+</shape>

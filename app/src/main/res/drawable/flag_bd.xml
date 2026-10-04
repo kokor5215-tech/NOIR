@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: circle-flag BD — (c) HatScripts/circle-flags, MIT. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="512" android:viewportHeight="512">
+  <group>
+    <clip-path android:pathData="M0.0,256.0 a256.0,256.0 0 1,0 512.0,0 a256.0,256.0 0 1,0 -512.0,0 Z" />
+      <path android:fillColor="#FF496E2D"
+        android:pathData="M0 0h512v512H0z" />
+      <path android:fillColor="#FFD80027"
+        android:pathData="M89.00000000000001,256.0 a111.3,111.3 0 1,0 222.6,0 a111.3,111.3 0 1,0 -222.6,0 Z" />
+  </group>
+</vector>

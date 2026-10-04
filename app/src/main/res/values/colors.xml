@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ============================================================================
+  NOIR — Monochrome Palette
+  ============================================================================
+  Palet dasar: Apple iOS Dark Mode system colors.
+  Konsep: latar hitam pekat (OLED), aksen putih, hierarki lewat tingkat abu.
+
+  Kalau mau ganti aksen, ubah HANYA nilai `colorPrimary` + `colorAccent`
+  di blok "ACCENT" di bawah. Sisanya tidak perlu disentuh.
+  ============================================================================
+-->
+<resources>
+
+    <!-- ============ ACCENT (satu-satunya blok yang perlu diubah) ============ -->
+    <color name="colorPrimary">#F2F2F7</color>
+    <color name="colorPrimarySecond">@color/colorPrimary</color>
+    <color name="colorAccent">#F2F2F7</color>
+    <color name="colorPrimaryDark">#000000</color>
+
+    <!-- Teks yang berdiri DI ATAS colorPrimary.
+         Wajib gelap karena colorPrimary sekarang terang. -->
+    <color name="colorOnPrimaryNoir">#000000</color>
+
+    <!-- ============ SURFACE / LATAR ============ -->
+    <!-- systemBackground murni: hitam total, hemat daya di layar OLED -->
+    <color name="primaryBlackBackground">#000000</color>
+    <!-- secondarySystemBackground -->
+    <color name="primaryGrayBackground">#1C1C1E</color>
+    <color name="iconGrayBackground">#141416</color>
+    <color name="boxItemBackground">#0A0A0A</color>
+    <color name="colorSearch">#1C1C1E</color>
+
+    <!-- ============ TEKS ============ -->
+    <color name="textColor">#F5F5F7</color>
+    <!-- systemGray -->
+    <color name="grayTextColor">#8E8E93</color>
+    <!-- systemGray4 (light) -->
+    <color name="grayShimmer">#C7C7CC</color>
+    <!-- systemGray2 -->
+    <color name="iconColor">#98989D</color>
+
+    <color name="searchColorTransparent">#14FFFFFF</color>
+    <color name="progressBackgroundColor">#14FFFFFF</color>
+
+    <!-- ============ NETRAL DASAR ============ -->
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="gray_200">#EEEEEE</color>
+    <color name="gray_400">#BDBDBD</color>
+    <color name="whiteText">#FFF</color>
+    <color name="blackText">#000</color>
+
+    <!-- ============ PENANDA "SEDANG TAYANG" ============ -->
+    <!-- Sebelumnya merah muda; sekarang monokrom agar konsisten. -->
+    <color name="colorOngoing">#E5E5EA</color>
+
+    <!-- ============ BADGE: dibedakan lewat TINGKAT ABU, bukan warna ============ -->
+    <!-- Dub  = paling terang -->
+    <color name="dubColorBg">#E5E5EA</color>
+    <color name="dubColorText">#0A0A0A</color>
+    <!-- Sub  = abu tengah -->
+    <color name="subColorBg">#A1A1A6</color>
+    <color name="subColorText">#0A0A0A</color>
+    <!-- Type = paling gelap, teks putih -->
+    <color name="typeColorBg">#48484A</color>
+    <color name="typeColorText">#F5F5F7</color>
+
+    <!-- ============ PENANDA DEWASA ============ -->
+    <!-- SENGAJA tidak dibuat abu-abu: penanda NSFW harus tetap mudah
+         dibedakan demi keamanan pengguna. Merah yang diredam. -->
+    <color name="adultColor">#B4463F</color>
+
+    <!-- ============ PEMUTAR VIDEO ============ -->
+    <color name="video_ripple">#80FFFFFF</color>
+    <color name="video_button_ripple">#32FFFFFF</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="darkBarTransparent">#C0000000</color>
+    <color name="skipOpTransparent">#4D000000</color>
+    <color name="darkBar">#000000</color>
+    <color name="videoProgress">#66FFFFFF</color>
+    <color name="playIconBackground">#B3000000</color>
+    <color name="noir_play_underlay">#59000000</color>
+
+    <color name="amoledModeLight">#0A0A0A</color>
+
+    <!-- ============ TEMA ALTERNATIF (bawaan upstream) ============ -->
+    <!-- Dibiarkan apa adanya. Tema default sudah monokrom; ini cuma
+         opsi tambahan di Pengaturan. Nonaktifkan kalau mau murni monokrom. -->
+
+    <!-- Light Mode -->
+    <color name="lightPrimaryGrayBackground">#F2F2F7</color>
+    <color name="lightBitDarkerGrayBackground">#FFFFFF</color>
+    <color name="lightGrayBackground">#E5E5EA</color>
+    <color name="lightItemBackground">#E5E5EA</color>
+    <color name="lightTextColor">#1C1C1E</color>
+    <color name="lightGrayTextColor">#636366</color>
+    <color name="lightIconColor">#636366</color>
+
+    <!-- Dracula -->
+    <color name="DraculaPrimaryGrayBackground">#414450</color>
+    <color name="DraculaBitDarkerGrayBackground">#282a36</color>
+    <color name="DraculaGrayBackground">#44475A</color>
+    <color name="DraculaItemBackground">#373844</color>
+    <color name="DraculaTextColor">#F8F8F2</color>
+    <color name="DraculaGrayTextColor">#6272A4</color>
+    <color name="DraculaIconColor">#6272A4</color>
+
+    <!-- Lavender Dreams -->
+    <color name="LavenderPrimaryGrayBackground">#f7eefc</color>
+    <color name="LavenderBitDarkerGrayBackground">#fdf0fb</color>
+    <color name="LavenderGrayBackground">#b794f6</color>
+    <color name="LavenderItemBackground">#f8f5ff</color>
+    <color name="LavenderTextColor">#2d1b47</color>
+    <color name="LavenderGrayTextColor">#9ab3ff</color>
+    <color name="LavenderIconColor">#7c3aed</color>
+
+    <!-- Silent Blue -->
+    <color name="SilentBluePrimaryGrayBackground">#282f49</color>
+    <color name="SilentBlueBitDarkerGrayBackground">#151a30</color>
+    <color name="SilentBlueGrayBackground">#3A446A</color>
+    <color name="SilentBlueItemBackground">#3A446A</color>
+    <color name="SilentBlueTextColor">#E0E1F3</color>
+    <color name="SilentBlueGrayTextColor">#7B83B0</color>
+    <color name="SilentBlueIconColor">#7B83B0</color>
+
+    <!-- Pemilih warna aksen di Pengaturan.
+         Masih tersedia sebagai opsi; default aplikasi sudah monokrom. -->
+    <color name="colorPrimaryBlue">#5664B7</color>
+    <color name="colorPrimaryRed">#D50000</color>
+    <color name="colorPrimaryPurple">#6200EA</color>
+    <color name="colorPrimaryGreen">#00BFA5</color>
+    <color name="colorPrimaryGreenApple">#48E484</color>
+    <color name="colorPrimaryBanana">#E4D448</color>
+    <color name="colorPrimaryParty">#ea596e</color>
+    <color name="colorPrimaryPink">#ff1493</color>
+    <color name="colorPrimaryCarnationPink">#BD5DA5</color>
+    <color name="colorPrimaryDarkGreen">#004500</color>
+    <color name="colorPrimaryMaroon">#451010</color>
+    <color name="colorPrimaryNavyBlue">#000080</color>
+    <color name="colorPrimaryGrey">#515151</color>
+    <color name="colorPrimaryWhite">#FFFFFF</color>
+    <color name="colorPrimaryBrown">#622C00</color>
+    <color name="colorPrimaryOrange">#CE8500</color>
+    <color name="colorPrimaryDandelionYellow">#F5BB00</color>
+    <color name="colorPrimaryCoolBlue">#408cac</color>
+    <color name="colorPrimaryLavender">#6F55AF</color>
+
+    <!-- Monokrom sebagai opsi aksen tambahan -->
+    <color name="colorPrimaryNoir">#F2F2F7</color>
+
+    <color name="colorTestPass">#48E484</color>
+    <color name="colorTestFail">#ea596e</color>
+    <color name="colorTestWarning">#FF9800</color>
+</resources>

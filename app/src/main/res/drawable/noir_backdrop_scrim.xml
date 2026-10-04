@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NOIR: scrim global — TIDAK pernah opaque penuh, supaya warna aura tetap
+     kelihatan samar di seluruh layar (belakang carousel) = satu permukaan
+     kontinu, tanpa batas tambalan. Atas gelap demi status bar & judul. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:angle="270"
+        android:startColor="#E6000000"
+        android:centerColor="#7A000000"
+        android:centerY="0.40"
+        android:endColor="#CC000000" />
+</shape>

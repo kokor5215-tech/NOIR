@@ -1,0 +1,8 @@
+app:
+  name: Noir
+  authors: USERNAME_KAMU
+  category: entertainment
+  description: Android app for streaming and downloading media.
+  icon: https://raw.githubusercontent.com/USERNAME_KAMU/REPO_KAMU/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png
+  releases:
+    url: https://github.com/USERNAME_KAMU/REPO_KAMU/releases
